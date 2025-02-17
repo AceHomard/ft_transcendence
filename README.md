@@ -35,7 +35,7 @@ Nous avons travaillé ensemble pour concevoir et développer `ft_transcendence` 
 ✅ **Organisation de tournois compétitifs** 🏆  
 ✅ **Gestion des utilisateurs & profils personnalisés** 👤  
 ✅ **Sécurité avancée avec authentification 2FA** 🔑  
-✅ **Stockage des scores sur la blockchain Ethereum** 🔗🪙 
+✅ **Stockage des scores sur la blockchain Ethereum** 🔗🪙  
 ✅ **Mode contre IA 🤖 et support des joueurs distants 🌍**  
 ✅ **Tableaux de statistiques & historique des matchs 📊**  
 
