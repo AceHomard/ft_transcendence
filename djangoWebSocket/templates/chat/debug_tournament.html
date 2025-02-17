@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Debug</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/room.css' %}">
+    <style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 25px;
+        border-radius: 15px;
+        background: #dddddd;
+        width: fit-content;
+        margin: 10px;
+    }
+
+    .container h1 {
+        margin-bottom: 10px;
+    }
+
+    .index {
+        font-weight: bold;
+    }
+
+    .value {
+        font-style: italic;
+        font-weight: normal;
+    }
+
+    .room-int {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 15px;
+        border-radius: 15px;
+        background: #a9a9a9;
+        width: fit-content;
+        margin: 10px;
+    }
+</style>
+</head>
+<body>
+
+<h1>In Game Tour:</h1>
+{% for tour in in_game_tour %}
+    <div class="container">
+    <span><span class="index">Tour_id:</span>&ensp;&ensp;<span class="value">{{ tour.getId }}</span></span>
+    <span><span class="index">Player_nb:</span>&ensp;&ensp;<span class="value">{{ tour.getPlayerNb }}</span></span>
+    <span><span class="index">Demi room A:</span>
+        <div class="room-int">
+            <span><span class="index">ID:</span>&ensp;&ensp;<span class="value">{{ tour.getDemiRoomA.getId }}</span></span>
+            <span><span class="index">Player_nb:</span>&ensp;&ensp;<span class="value">{{ tour.getDemiRoomA.getPlayerNb }}</span></span>
+            <span><span class="index">Player_id A:</span>&ensp;<span class="value">{{ tour.getDemiRoomA.getPlayerA }}</span></span>
+            <span><span class="index">Player_id B:</span>&ensp;<span class="value">{{ tour.getDemiRoomA.getPlayerB }}</span></span>
+        </div>
+    </span>
+    <span><span class="index">Demi room B:</span>
+        <div class="room-int">
+            <span><span class="index">ID:</span>&ensp;&ensp;<span class="value">{{ tour.getDemiRoomB.getId }}</span></span>
+            <span><span class="index">Player_nb:</span>&ensp;&ensp;<span class="value">{{ tour.getDemiRoomB.getPlayerNb }}</span></span>
+            <span><span class="index">Player_id A:</span>&ensp;<span class="value">{{ tour.getDemiRoomB.getPlayerA }}</span></span>
+            <span><span class="index">Player_id B:</span>&ensp;<span class="value">{{ tour.getDemiRoomB.getPlayerB }}</span></span>
+        </div>
+    </span>
+    <span><span class="index">Final room:</span>
+        <div class="room-int">
+            <span><span class="index">ID:</span>&ensp;&ensp;<span class="value">{{ tour.getDemiRoomA.getId }}</span></span>
+            <span><span class="index">Player_nb:</span>&ensp;&ensp;<span class="value">{{ tour.getFinalRoom.getPlayerNb }}</span></span>
+            <span><span class="index">Player_id A:</span>&ensp;<span class="value">{{ tour.getFinalRoom.getPlayerA }}</span></span>
+            <span><span class="index">Player_id B:</span>&ensp;<span class="value">{{ tour.getFinalRoom.getPlayerB }}</span></span>
+        </div>
+    </span>
+</div>
+{% endfor %}
+
+<br>
+
+<h1>Waiting Tour:</h1>
+{% if waiting_tour != False %}
+<div class="container">
+    <span><span class="index">Tour_id:</span>&ensp;&ensp;<span class="value">{{ waiting_tour.getId }}</span></span>
+    <span><span class="index">Player_nb:</span>&ensp;&ensp;<span class="value">{{ waiting_tour.getPlayerNb }}</span></span>
+    <span><span class="index">Demi room A:</span>
+        <div class="room-int">
+            <span><span class="index">ID:</span>&ensp;&ensp;<span class="value">{{ waiting_tour.getDemiRoomA.getId }}</span></span>
+            <span><span class="index">Player_nb:</span>&ensp;&ensp;<span class="value">{{ waiting_tour.getDemiRoomA.getPlayerNb }}</span></span>
+            <span><span class="index">Player_id A:</span>&ensp;<span class="value">{{ waiting_tour.getDemiRoomA.getPlayerA }}</span></span>
+            <span><span class="index">Player_id B:</span>&ensp;<span class="value">{{ waiting_tour.getDemiRoomA.getPlayerB }}</span></span>
+        </div>
+    </span>
+    <span><span class="index">Demi room B:</span>
+        <div class="room-int">
+            <span><span class="index">ID:</span>&ensp;&ensp;<span class="value">{{ waiting_tour.getDemiRoomB.getId }}</span></span>
+            <span><span class="index">Player_nb:</span>&ensp;&ensp;<span class="value">{{ waiting_tour.getDemiRoomB.getPlayerNb }}</span></span>
+            <span><span class="index">Player_id A:</span>&ensp;<span class="value">{{ waiting_tour.getDemiRoomB.getPlayerA }}</span></span>
+            <span><span class="index">Player_id B:</span>&ensp;<span class="value">{{ waiting_tour.getDemiRoomB.getPlayerB }}</span></span>
+        </div>
+    </span>
+    <span><span class="index">Final room:</span>
+        <div class="room-int">
+            <span><span class="index">ID:</span>&ensp;&ensp;<span class="value">{{ waiting_tour.getDemiRoomA.getId }}</span></span>
+            <span><span class="index">Player_nb:</span>&ensp;&ensp;<span class="value">{{ waiting_tour.getFinalRoom.getPlayerNb }}</span></span>
+            <span><span class="index">Player_id A:</span>&ensp;<span class="value">{{ waiting_tour.getFinalRoom.getPlayerA }}</span></span>
+            <span><span class="index">Player_id B:</span>&ensp;<span class="value">{{ waiting_tour.getFinalRoom.getPlayerB }}</span></span>
+        </div>
+    </span>
+</div>
+{% endif %}
+<script type="text/javascript">
+</script>
+
+</body>
+</html>

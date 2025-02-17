@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ft_transcendence</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&amp;display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+		rel="stylesheet">
+	<link href="css/var.css" rel="stylesheet" />
+	<link href="css/style.css" rel="stylesheet" />
+	<link href="css/social.css" rel="stylesheet" />
+	<link href="css/game.css" rel="stylesheet" />
+	<link href="css/room.css" rel="stylesheet" />
+	<link href="css/history.css" rel="stylesheet" />
+	<link href="css/burger.css" rel="stylesheet" />
+</head>
+<body>
+	<nav>
+		<h1 class="pong-title">PONG</h1>
+		<div class="burger-menu" id="burgerMenu">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<ul class="nav-buttons">
+			<li class="custom-select-container">
+				<select id="language-selector">
+					<option value="en" data-image="img/en.svg">EN</option>
+					<option value="fr" data-image="img/fr.svg">FR</option>
+					<option value="es" data-image="img/es.svg">ES</option>
+				</select>
+				<div class="custom-select">
+					<div class="selected-option">
+						<svg viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd"
+								d="M3.784 11.25h3.99c.153-2.35.994-4.44 1.815-5.969.282-.525.564-.988.82-1.378a8.255 8.255 0 0 0-6.625 7.347ZM12 4.232c-.305.43-.697 1.03-1.09 1.759-.75 1.398-1.481 3.237-1.632 5.259h5.444c-.15-2.022-.882-3.861-1.633-5.259-.392-.73-.784-1.33-1.089-1.76Zm2.722 8.518H9.278c.15 2.022.882 3.861 1.633 5.259.392.73.784 1.33 1.089 1.76.305-.43.697-1.03 1.09-1.76.75-1.398 1.481-3.237 1.632-5.259Zm-4.313 7.347c-.256-.39-.538-.853-.82-1.378-.82-1.528-1.662-3.618-1.815-5.969h-3.99a8.255 8.255 0 0 0 6.625 7.347Zm3.182 0c.256-.39.538-.853.82-1.378.82-1.528 1.662-3.618 1.815-5.969h3.99a8.255 8.255 0 0 1-6.625 7.347Zm6.625-8.847h-3.99c-.153-2.35-.994-4.44-1.815-5.969a18.45 18.45 0 0 0-.82-1.378 8.255 8.255 0 0 1 6.625 7.347ZM2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Z"
+								clip-rule="evenodd"></path>
+						</svg>
+					</div>
+					<div class="options-container">
+						<div class="option" data-value="en">
+							<img src="../img/en.svg" alt="English Flag" class="flag-icon">
+							<span>EN</span>
+						</div>
+						<div class="option" data-value="fr">
+							<img src="../img/fr.svg" alt="French Flag" class="flag-icon">
+							<span>FR</span>
+						</div>
+						<div class="option" data-value="es">
+							<img src="../img/es.svg" alt="Spanish Flag" class="flag-icon">
+							<span>ES</span>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li><button class="nav-button" id="Game" style="display: none;">Play</button></li>
+			<li class="dropdown">
+				<button class="nav-button dropbtn" style="display: none;" id="Profil">Profil</button>
+				<div class="dropdown-content">
+					<a class="dropdown-content-top" id="Settings">Settings</a>
+					<a id="History">History</a>
+					<a class="dropdown-content-bot" id="logoutButton">Disconnect</a>
+				</div>
+			</li>
+			<li><button class="nav-button" id="loginButton" style="display: block;">Connection</button></li>
+			<li><button class="nav-button" id="signinButton" style="display: block;">Register</button></li>
+		</ul>
+	</nav>
+
+	<div id="notifications" class="notifications"></div>
+
+	<div class="stage">
+		<div class="rotate"></div>
+		<content class="play-page" id="play_page_content">
+			<canvas class="tree-array" id="tree_array" width="570px" height="570px" style="display: none;"></canvas>
+			<div class="container" id="content">
+				<!-- script.js  -->
+			</div>
+		</content>
+		<div class="social-box-main" style="height:32px" id="social_main">
+			<div class="social-icon-btn" id="social_main_btn">
+				<img src="../img/arrow_social.svg" class="social-icon-img-btn" style="transform: rotateX(180deg);"
+                     id="social_main_arrow">
+				<div class="social-online-box">
+					<span class="social-online social-online-title">Social</span>
+					<span class="social-online" id="social_online_nb">(0)</span>
+				</div>
+
+				<div class="social-user-box">
+					<img src="../img/social.svg" class="social-img-player">
+					<div class="social-status-player social-status-player-on"></div>
+				</div>
+			</div>
+
+			<div class="social-list">
+				<div class="social-box-title">
+					<img src="../img/group_friends.svg" class="social-img-title" style="width: 15px;">
+					<span id="Friends">Friends</span>
+				</div>
+				<div class="social-list-player" id="social_list_friends">
+
+
+				</div>
+				<div class="social-box-title">
+					<img src="../img/group_online.svg" class="social-img-title">
+					<span id="Online">Online</span>
+				</div>
+				<div class="social-list-player" id="social_list_player">
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+    <script type="text/javascript" src="js/translation.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+	<script type="text/javascript" src="js/treeVisual.js"></script>
+	<script type="text/javascript" src="js/matchmaking.js"></script>
+	<script type="text/javascript" src="js/notification.js"></script>
+	<script type="text/javascript" src="js/notificationWS.js"></script>
+	<script type="text/javascript" src="js/social.js"></script>
+	<script type="text/javascript" src="js/history.js"></script>
+	<script type="text/javascript" src="js/gamejs/main.js"></script>
+	<script type="text/javascript" src="js/gamejs/game.js"></script>
+	<script type="text/javascript" src="js/gamejs/ponglocale.js"></script>
+	<script type="text/javascript" src="js/neon.js"></script>
+	<script type="text/javascript" src="js/Uniqid.js"></script>
+	<script type="text/javascript" src="js/form.js"></script>
+	<script type="text/javascript" src="js/auth.js"></script>
+	<script type="text/javascript" src="js/matchmaking_visual.js"></script>
+	<script type="text/javascript" src="js/fake_game.js"></script>
+	<script type="text/javascript" src="js/play_interface.js"></script>
+	<script type="text/javascript" src="js/fireworks.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="js/burger.js"></script>
+
+</body>
+
+</html>

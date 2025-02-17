@@ -1,0 +1,165 @@
+.social-box-main {
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    border-top-left-radius: 8px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    bottom: 0px;
+    right: 0px;
+    z-index: 12;
+    background-color: var(--nav-bg-color);
+    transition: 0.5s all;
+}
+
+.social-icon-btn {
+    background-color: var(--nav-bg-color);
+    width: 250px;
+    height: 32px;
+    border-top-left-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+
+    font-size: 20px
+}
+
+.social-icon-btn:hover {
+    background: var(--button-bg-color);
+}
+
+.social-icon-img-btn {
+    margin-left:15px;
+    transition: 0.5s all;
+}
+
+.social-online {
+    font-size: 13.5px
+}
+
+.social-user-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.social-player-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 6px;
+}
+
+.social-img-player {
+    width: 18px;
+    height: 18px;
+}
+
+.social-status-player {
+    width: 6px;
+    height:6px;
+    margin-left:3px;
+    border-radius: 10px;
+
+}
+
+.social-status-player-on {
+    background: #00e800;
+}
+
+.social-status-player-off {
+    background: #57575754;
+}
+
+.social-list {
+    
+    display: flex;
+    width: 100%;
+    height: calc(100% - 32px);
+    border-top: #606060 solid 1px;
+    flex-direction: column;
+    overflow-y: overlay;
+    scrollbar-width: none; /* pour Firefox */
+    -ms-overflow-style: none; /* pour Internet Explorer et Edge */
+}
+
+
+.social-list::-webkit-scrollbar {
+  display: none; /* pour Chrome, Safari, et Opera */
+}
+
+.social-box-title {
+    width: 100%;
+    height: 30px;
+    min-height: 30px;
+    background: #4646466e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13.5px;
+    color: #9b9b9b;
+    font-weight: 500;
+    border-bottom: #606060 solid 1px; 
+}
+
+.social-list-player {
+    display: flex;
+    flex-direction: column;
+}
+
+.social-player {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 35px;
+    border-bottom: #b3b3b31c solid 1px;
+}
+
+.social-player-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.social-player-name {
+    margin-left: 7px;
+    font-size: 13.6px;
+    cursor: pointer;
+    width: 200px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+}
+
+.social-player-action {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.scrollable-div {
+  width: 300px;
+  height: 200px;
+  
+}
+
+.social-img-title {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px
+}
+
+.social-online-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.social-online-title {
+    margin: 5px;
+}

@@ -1,0 +1,141 @@
+version: "3.8"
+
+services:
+  nginx:
+    build:
+      context: Front/
+      dockerfile: Dockerfile
+    ports:
+      - '8080:80'
+      - '8443:443'
+    volumes:
+      - vmedia:/usr/share/nginx/html/media
+    depends_on:
+      - authentification
+      - frontend
+      - notification
+      - matchmaking
+      - crypto
+    networks:
+      - mynetwork
+
+  authentification:
+    build:
+      context: Auth/
+      dockerfile: Dockerfile
+    volumes:
+      - ./Auth/:/app
+      - vmedia:/app/media
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - mynetwork
+    env_file:
+      - Auth/.envauthentification
+    restart: always
+
+  frontend:
+    build:
+      context: ApiHTMLFront/
+      dockerfile: Dockerfile
+    volumes:
+      - ./ApiHTMLFront/:/app
+      - ./Auth/model:/app/model
+    depends_on:
+      - db
+      - authentification
+    networks:
+      - mynetwork
+    env_file:
+      - ApiHTMLFront/.envfrontend
+    restart: always
+
+  notification:
+    build:
+      context: notif/
+      dockerfile: Dockerfile
+    volumes:
+      - ./notif/:/app
+      - ./Auth/model:/app/model
+    depends_on:
+      - db
+      - authentification
+    networks:
+      - mynetwork
+    env_file:
+      - notif/.envnotification
+    restart: always
+  
+  matchmaking:
+    build:
+      context: djangoWebSocket/
+      dockerfile: Dockerfile
+    volumes:
+      - ./djangoWebSocket/:/app
+      - ./Auth/model:/app/model
+      - social_data:/app/social_data
+    depends_on:
+      - db
+      - authentification
+    networks:
+      - mynetwork
+    env_file:
+      - djangoWebSocket/.envmatchmaking
+    restart: always
+    
+  crypto:
+    build:
+      context: DjangoWeb3/
+      dockerfile: Dockerfile
+    env_file:
+      - DjangoWeb3/.envcrypto
+    volumes:
+      - ./DjangoWeb3/:/app
+      - ./Auth/model:/app/model
+    depends_on:
+      - db
+      - authentification
+    networks:
+      - mynetwork
+    restart: always
+
+  bot:
+    build:
+      context: Botted/
+      dockerfile: Dockerfile
+    volumes:
+      - ./Botted/:/app
+    depends_on:
+      - db
+      - authentification
+    networks:
+      - mynetwork
+    env_file:
+      - Botted/.envbot
+    restart: always
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - volpostgres:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  volpostgres:
+  vmedia:
+  social_data:

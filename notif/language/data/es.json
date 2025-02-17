@@ -1,0 +1,30 @@
+{
+	"notif.error.title": "ERROR",
+	"notif.info.title": "INFO",
+
+	"notif.error.already_in_game": "Ya estás en un juego",
+	"notif.error.already_waiting_room": "Ya estás esperando un juego",
+	"notif.error.unknown_in_room": "No se puede encontrar el juego",
+	"notif.error.already_in_room": "Ya estás en una sala",
+	"notif.error.game_full": "El juego ya está lleno",
+
+	"notif.error.already_waiting_tournament": "Ya estás esperando un torneo",
+	"notif.error.unknown_in_tournament": "No se puede encontrar el torneo",
+	"notif.error.already_in_tournament": "Ya estás en el torneo",
+	"notif.error.tournament_full": "El torneo ya está lleno",
+
+	"notif.error.incorrect_login": "Nombre de usuario o contraseña inválidos",
+	"notif.error.register_id_already_used": "Identificador ya en uso",
+	"notif.error.register_user_already_used": "Nombre de usuario ya en uso",
+	"notif.error.password_mismatch": "Las contraseñas no coinciden",
+	
+	"notif.error.invalid_auth": "Credenciales inválidas, por favor inicie sesión de nuevo",
+
+	"notif.info.social_add_friend": "Has agregado un nuevo amigo",
+	"notif.info.social_remove_friend": "Has eliminado un amigo",
+
+	"notif.error.otp": "Código OTP inválido",
+	"notif.error.form": "Información no actualizada",
+	"notif.info.form": "Información actualizada"
+}
+  

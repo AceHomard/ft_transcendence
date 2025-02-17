@@ -1,0 +1,16 @@
+<div class="login-box-main">
+	<h2>2FA</h2>
+	<form method="post" id="2Fa_form" action="/auth/verify_otp/">
+		<div class="login-box-input" id="identifiant_box">
+			<label for="identifiant" class="form-label" id="identifiant_title">Identifiant</label>
+			<input type="text" class="form-control login-input" id="identifiant" name="identifiant" autocomplete="off"
+				required>
+		</div>
+		<div class="login-box-input" id="otp_code_box">
+			<label for="otp_code" class="form-label" id="otp_code_title">One-Time Pin:</label>
+			<input type="otp_code" class="form-control login-input" id="otp_code" name="otp_code" autocomplete="off"
+				required>
+		</div>
+		<button type="submit" class="login-submit-btn" id="connexionbutton">Log in</button>
+	</form>
+</div>

@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Debug</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/room.css' %}">
+    <style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 25px;
+        border-radius: 15px;
+        background: #dddddd;
+        width: fit-content;
+        margin: 10px;
+    }
+
+    .container h1 {
+        margin-bottom: 10px;
+    }
+
+    .index {
+        font-weight: bold;
+    }
+
+    .value {
+        font-style: italic;
+        font-weight: normal;
+    }
+</style>
+</head>
+<body>
+
+<h1>In Game Room:</h1>
+{% for room in in_game_room %}
+    <div class="container">
+    <span><span class="index">Room_id:</span>&ensp;&ensp;<span class="value">{{ room.getId }}</span></span>
+    <span><span class="index">Is_IA:</span>&ensp;&ensp;<span class="value">{{ room.getGameIa }}</span></span>
+    <span><span class="index">Player_nb:</span>&ensp;&ensp;<span class="value">{{ room.getPlayerNb }}</span></span>
+    <span><span class="index">Player_id A:</span>&ensp;<span class="value">{{ room.getPlayerA }}</span></span>
+    <span><span class="index">Player_id B:</span>&ensp;<span class="value">{{ room.getPlayerB }}</span></span>
+</div>
+{% endfor %}
+
+<br>
+
+<h1>Waiting Room:</h1>
+{% if waiting_room != False %}
+<div class="container">
+    <span><span class="index">Room_id:</span>&ensp;&ensp;<span class="value">{{ waiting_room.getId }}</span></span>
+    <span><span class="index">Player_nb:</span>&ensp;&ensp;<span class="value">{{ waiting_room.getPlayerNb }}</span></span>
+    <span><span class="index">Player_id A:</span>&ensp;<span class="value">{{ waiting_room.getPlayerA }}</span></span>
+    <span><span class="index">Player_id B:</span>&ensp;<span class="value">{{ waiting_room.getPlayerB }}</span></span>
+</div>
+{% endif %}
+<script type="text/javascript">
+</script>
+
+</body>
+</html>

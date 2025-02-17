@@ -1,0 +1,11 @@
+:root {
+  --nav-bg-color: #18181c;
+  --button-bg-color: #404044;
+  --button-text-color-hover: #e6e6ea;
+  --button-text-color: #aaaaae;
+
+  --button-neon-color-b: 88,13,231;
+
+  --form-login-back: #18181c;
+  --form-login-back-light: #202020;
+}

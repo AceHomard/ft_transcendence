@@ -1,0 +1,13 @@
+{
+  "notif.error.title": "Erreur",
+  "notif.error.already_in_game": "Vous êtes déjà en partie",
+  "notif.error.already_waiting_room": "Vous êtes déjà en recherche d'une partie",
+  "notif.error.unknown_in_room": "Impossible de trouver la partie",
+  "notif.error.already_in_room": "Vous êtes déjà dans une room",
+  "notif.error.game_full": "La partie est déjà pleine",
+
+  "notif.error.already_waiting_tournament": "Vous êtes déjà en recherche d'un tournoi",
+  "notif.error.unknown_in_tournament": "Impossible de trouver le tournoi",
+  "notif.error.already_in_tournament": "Vous êtes déjà dans le tournoi",
+  "notif.error.tournament_full": "Le tournoi est déjà plein"
+}

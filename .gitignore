@@ -128,7 +128,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
 .venv
 env/
 venv/
@@ -169,3 +168,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Ignorer également d'autres fichiers générés ou spécifiques à Django
+**/__pycache__/
+**/*.pyc
+DjangoWeb3/application.log
+**/.venv/

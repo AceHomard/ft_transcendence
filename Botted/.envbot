@@ -1,0 +1,6 @@
+DJANGO_SECRET_KEY='django-insecure-b&)ba%5_kohu%k^v^z&#l4$(ae9^__wnh3iinsu#h_#p)qra3y'
+DB_NAME=admin
+DB_USER=admin
+DB_PASSWORD=1234
+DB_HOST=db
+DB_PORT=5432

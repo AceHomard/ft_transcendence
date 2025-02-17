@@ -1,0 +1,440 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	z-index: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+nav {
+	z-index: 3;
+	background-color: var(--nav-bg-color);
+	color: var(--button-text-color);
+	padding: 25px 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+nav h1 {
+	margin: 0;
+}
+
+.nav-button:hover {
+	background: var(--button-bg-color);
+	color: var(--button-text-color-hover);
+}
+
+.container {
+	z-index: 3;
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.pong-title {
+	font-family: "Press Start 2P", system-ui;
+	font-weight: 800;
+	font-style: normal;
+	color: var(--button-text-color-hover);
+}
+
+/* Style le conteneur de dropdown (positionnement relatif pour positionner le dropdown contenu) */
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+/* Style le contenu du dropdown (cache par defaut) */
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: var(--nav-bg-color);
+	/* min-width: 160px; */
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	border-radius: 8px;
+}
+
+/* Montre le dropdown au survol */
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+/* Style les liens dans le dropdown */
+.dropdown-content a {
+	color: var(--button-text-color);
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+/* Change la couleur de fond des liens au survol */
+.dropdown-content a:hover {
+	background-color: var(--button-bg-color);
+	color: var(--button-text-color-hover);
+}
+
+.dropdown-content-top {
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+.dropdown-content-bot {
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+/* Ajout d'une classe pour montrer le dropdown au clic */
+.dropdown-content.show {
+	display: block;
+}
+
+.pp {
+	height: auto;
+	/* Permet à l'image de s'adapter à la hauteur maximale */
+	max-width: 200px;
+	/* Définissez la largeur maximale souhaitée */
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.stage {
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+	background: linear-gradient(30deg, rgba(0, 0, 0, 1) 0%, rgb(49 25 26) 30%, rgb(2 10 29) 100%);
+}
+
+.stage .rotate {
+	position: absolute;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	transform: rotate(-30deg);
+}
+
+.stage spaneffect {
+	position: absolute;
+	border-radius: 10px;
+}
+
+.stage spaneffect.s1 {
+	background-color: rgb(255, 56, 86);
+	box-shadow: 0 0 5px rgba(255, 56, 86, .7),
+		0 0 10px rgba(255, 56, 86, .7),
+		0 0 20px rgba(255, 56, 86, .7),
+		0 0 30px rgba(255, 56, 86, .7);
+}
+
+.stage spaneffect.s2 {
+	background-color: rgb(var(--button-neon-color-b));
+	box-shadow: 0 0 5px rgba(var(--button-neon-color-b), .7),
+		0 0 10px rgba(var(--button-neon-color-b), .7),
+		0 0 20px rgba(var(--button-neon-color-b), .7),
+		0 0 30px rgba(var(--button-neon-color-b), .7);
+}
+
+.login-box-main {
+	z-index: 3;
+	display: flex;
+	color: white;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--form-login-back);
+	border-radius: 10px;
+
+	font-family: "Montserrat", sans-serif;
+}
+
+.login-box-main h2 {
+	padding: 20px 0px;
+	margin-bottom: 0px;
+	width: 272px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.login-box-main form {
+	display: flex;
+	color: var(--form-login-back-light);
+	flex-direction: column;
+	align-items: center;
+	width: 300px;
+	padding: 20px 30px;
+}
+
+.login-box-input {
+	height: 40px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	background: var(--form-login-back-light);
+	margin: 5px 0px;
+	padding: 5px 0px;
+	border-radius: 4px;
+
+	/*border: 1.5px solid #757575;*/
+}
+
+.login-box-input:focus {
+	border: 1.5px solid #757575;
+}
+
+.login-box-input label {
+	color: #757575;
+	font-size: 15px;
+	position: relative;
+	top: 12px;
+	left: 10px;
+	transition: 0.2s all;
+}
+
+.login-input {
+	border: none;
+	background: var(--form-login-back-light);
+	font-size: 17px;
+	color: #bdbdbd;
+	margin-left: 10px;
+}
+
+
+.login-box-input:-webkit-autofill,
+.login-box-input:-webkit-autofill:hover,
+.login-box-input:-webkit-autofill:focus,
+.login-box-input:-webkit-autofill:active {
+	transition: background-color 5000s ease-in-out 0s;
+	background-color: var(--form-login-back-light) !important;
+	font-family: "Montserrat", sans-serif !important;
+	font-size: 17px !important;
+	color: #bdbdbd !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	transition: background-color 5000s ease-in-out 0s;
+	background-color: var(--form-login-back-light) !important;
+	font-family: "Montserrat", sans-serif !important;
+	font-size: 17px !important;
+	color: #bdbdbd !important;
+}
+
+
+/* Supprimer les effets de focus pour tous les éléments focusables */
+.login-input:focus {
+	outline: none;
+}
+
+
+.login-submit-btn {
+	border: none;
+	outline: none;
+
+	font-family: "Montserrat", sans-serif;
+	color: var(--button-text-color-hover);
+
+	width: 100%;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 10px 20px;
+	font-size: 15px;
+	font-weight: 500;
+	background: var(--button-bg-color);
+	cursor: pointer;
+
+	border-radius: 5px;
+	margin-top: 15px;
+
+	cursor: pointer;
+}
+
+
+
+.custom-checkbox {
+	width: 30px;
+	/* Ajustez la largeur selon vos besoins */
+	height: 30px;
+	/* Ajustez la hauteur pour correspondre à la hauteur de la div */
+	accent-color: #580de7;
+	/* Optionnel : Changez la couleur de la case à cocher si supporté par le navigateur */
+	margin-left: 259px;
+}
+
+/* Optionnel : stylisation supplémentaire pour un look plus moderne de la case à cocher */
+.custom-checkbox {
+	appearance: none;
+	background-color: #fff;
+	border: 2px solid #580de7;
+	border-radius: 4px;
+	display: inline-block;
+	position: absolute;
+	cursor: pointer;
+}
+
+.custom-checkbox:checked {
+	background-color: #580de7;
+	border-color: #580de7;
+}
+
+.custom-checkbox:checked::after {
+	content: '';
+	position: absolute;
+	top: 3px;
+	left: 9px;
+	width: 6px;
+	height: 12px;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+
+/* Styles pour focus */
+.login-box-input:focus-within {
+	border: 1.5px solid #757575;
+}
+
+/* Cacher l'input file par défaut */
+input[type="file"] {
+	display: none;
+}
+
+/* Styles pour le bouton personnalisé */
+.custom-file-upload {
+	display: inline-block;
+	cursor: pointer;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Effet de survol pour le bouton */
+.custom-file-upload:hover {
+	color: var(--button-text-color);
+}
+
+/* styles.css */
+.custom-select-container {
+	position: relative;
+	width: 70px;
+}
+
+.custom-select {
+	position: relative;
+	width: 100%;
+	cursor: pointer;
+	color: var(--button-text-color);
+}
+
+.selected-option {
+	width: 29px;
+}
+
+.flag-icon {
+	width: 20px;
+	height: auto;
+	margin-right: 10px;
+}
+
+.options-container {
+	display: none;
+	position: absolute;
+	width: 100%;
+	background: #18181c;
+	z-index: 100;
+	margin-top: 26px;
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+}
+
+
+.option {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	cursor: pointer;
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+}
+
+.option:hover {
+	background: #404044;
+}
+
+.option img {
+	width: 20px;
+	height: auto;
+	margin-right: 10px;
+}
+
+.custom-select.active .options-container {
+	display: block;
+}
+
+
+svg {
+	color: #aaaaae;
+	fill: currentcolor;
+	width: 70px;
+	height: 25px;
+	align-items: center;
+	margin-top: 3px;
+}
+
+svg:hover {
+	color: #e6e6ea;
+}
+
+#language-selector {
+	display: none;
+	/* Masquer le sélecteur natif */
+}
+
+
+
+@media screen and (max-width: 980px) {
+	.login-box-main {
+		font-size: 1rem;
+	}
+
+	.login-box-main h2 {
+		font-size: 1.5rem;
+	}
+
+	.login-box-main form {
+		width: auto;
+		font-size: 1rem;
+	}
+
+	.login-box-main form input,
+	.login-box-main form button {
+		font-size: 1rem;
+	}
+
+	.login-box-main form label {
+		font-size: 0.70rem;
+	}
+
+	.custom-checkbox {
+		margin-left: 185px;
+	}
+}

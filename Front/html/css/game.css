@@ -1,0 +1,38 @@
+main {
+    height: calc(100% - 110px); /* Calculer la hauteur du main avec une marge en bas */
+    display: grid; /* Utilise le modèle de boîte flexible */
+    justify-content: center; /* Centre le contenu horizontalement */
+    align-items: center; /* Centre le contenu verticalement */
+    overflow: hidden; /* Empêche tout débordement hors de son conteneur */
+	z-index: 10;
+}
+
+canvas {
+    max-width: 100%; /* Limite la largeur du canvas à 100% de la largeur de son parent */
+    max-height: 100%;
+    height: auto; /* Permet au canvas de conserver son ratio hauteur/largeur */
+    border-radius: 10px; /* Ajoute une bordure pour mieux distinguer le canvas */
+	z-index: 20;
+}
+
+#block
+{
+    display: flex;
+    justify-content: space-around;
+}
+
+#cli-input {
+    width: 50%;
+    padding: 10px;
+    border-radius: 10px;
+   
+}
+
+.tree-array {
+	z-index: 5;
+	/*background: #b9b9b90f;*/
+	height:	570px;
+	width:	570px;
+    margin-top: 150px;
+}
+

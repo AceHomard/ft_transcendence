@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Lobby</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/room.css' %}">
+</head>
+<body>
+
+<div id="notifications" class="notifications">
+
+</div>
+
+<div class="room-main">
+    <div class="room-up-main">
+    <div class="room-title-main">
+        <h1>PONG</h1>
+    </div>
+    </div>
+    <div class="room-create-btn-main">
+        <span class="room-create-btn unselectable" onclick="matchmaking.findGame()">JOIN MATCH</span>
+        <div class="loader" id="find_game_loader" style="display: none"></div>
+    </div>
+     <div class="room-create-btn-main">
+        <span class="room-create-btn unselectable" onclick="matchmaking.findTour()">JOIN TOURNAMENT</span>
+        <div class="loader" id="find_tour_loader" style="display: none"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="{% static 'js/auth.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/game/notification.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/game/matchmaking.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/game/matchmaking_visual.js' %}"></script>
+<script type="text/javascript">
+    const notification = new Notification()
+    const matchmaking = new Matchmaking()
+
+</script>
+</body>
+</html>

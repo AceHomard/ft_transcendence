@@ -1,0 +1,29 @@
+{
+	"notif.error.title": "ERROR",
+	"notif.info.title": "INFO",
+
+	"notif.error.already_in_game": "You are already in a game",
+	"notif.error.already_waiting_room": "You are already searching for a game",
+	"notif.error.unknown_in_room": "Unable to find the game",
+	"notif.error.already_in_room": "You are already in a room",
+	"notif.error.game_full": "The game is already full",
+
+	"notif.error.already_waiting_tournament": "You are already searching for a tournament",
+	"notif.error.unknown_in_tournament": "Unable to find the tournament",
+	"notif.error.already_in_tournament": "You are already in the tournament",
+	"notif.error.tournament_full": "The tournament is already full",
+
+	"notif.error.incorrect_login": "Invalid username or password",
+	"notif.error.register_id_already_used": "Identifier already used",
+	"notif.error.register_user_already_used": "Username already used",
+	"notif.error.password_mismatch": "Passwords do not match",
+	
+	"notif.error.invalid_auth": "Invalid credentials, please log in again",
+
+	"notif.info.social_add_friend": "You have added a new friend",
+	"notif.info.social_remove_friend": "You have removed a friend",
+
+	"notif.error.otp": "Invalid OTP code",
+	"notif.error.form": "Information not updated",
+	"notif.info.form": "Information updated"
+}

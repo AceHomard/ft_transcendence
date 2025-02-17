@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ft_transcendence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&amp;display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="var.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+	<link href="social.css" rel="stylesheet" />
+    <link href="game.css" rel="stylesheet" />
+    <link href="matchmaking/room.css" rel="stylesheet" />
+	<link href="history.css" rel="stylesheet" />
+</head>
+<style type="text/css">
+.tournament-main {	
+	z-index: 5;
+    display: flex;
+    height: 100%;
+    width: 100%;
+	flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.tournament-side {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tournament-side-up {
+	height: 200px;
+	width: 4px;
+	background: white;
+	border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px
+}
+
+.tournament-side-hori{
+	height: 4px;
+	width: 100%;
+	border-radius: 4px;
+}
+
+.tournament-side-hori-line{
+	height: 4px;
+	/*width: 50px;*/
+	background: white;
+	
+}
+
+.tournament-side-left{
+	margin-left: 93px;
+	border-top-left-radius: 0px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 0px
+}
+
+.tournament-side-right{
+	margin-right: 93px;
+	border-top-left-radius: 4px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 4px
+}
+
+
+.tournament-vs {
+	display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+.tournament-vs-line {
+	height: 4px;
+	width: 40px;
+	background: white;
+	margin: 0px 10px;
+	border-radius: 4px;
+}
+
+.tournament-vs-pic {
+	height:	65px;
+	width:	65px;
+}
+
+.tournament-final {
+	display: flex;
+    flex-direction: row;
+    margin: 0px 10px;
+    margin-bottom: 285px;
+    align-items: center;
+    
+}
+
+.tournament-final-avatar {
+	border-radius: 50px;
+	height:	65px;
+	width:	65px;
+	background: rgb(255 56 86 / 47%);
+	font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 38px;
+	color: #e7eced;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+</style>
+<body>
+	<body>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script type="text/javascript">
+	//console.log("ee");
+	class mmPlayer {
+		#socket_url;
+		#socket;
+		#message_queue;
+		#name;
+
+		constructor(url_game, name_bool) {
+			let raw_url = window.location.host.split(":");
+			let url = raw_url[0] + ":8443";
+			this.#socket_url = url_game;
+			this.#socket = new WebSocket(this.#socket_url);
+			this.#message_queue = [];
+			this.#name = name_bool;
+
+			this.#socketListen();
+			this.#onOpenTrigger();
+		}
+
+		#onOpenTrigger()
+		{
+			this.#socket.onopen = () => {
+				this.#flushQueue();
+			};
+		}
+
+
+		// -------------- RECEIVE --------------
+
+		#socketListen()
+		{
+			this.#socket.onmessage = (e) => {
+				let data = JSON.parse(e.data);
+				if (this.#name)
+					//console.log(this.#socket_url, 'Data:', data)
+
+				if (data["type"] === "connection_etalished")
+				{
+
+				}
+			};
+		}
+
+		#flushQueue()
+		{
+			while (this.#message_queue.length > 0)
+			{
+				const message = this.#message_queue.shift();
+				if (message.type == 1)
+					this.sendAuth(message.id);
+				if (message.type == 2)
+					this.sendAuthGame(message.id);
+				if (message.type == 3)
+					this.findTour();
+			}
+		}
+
+
+		// -------------- SEND --------------
+
+		findTour()
+		{
+			if (this.#socket.readyState === WebSocket.OPEN)
+			{
+				this.#socket.send(JSON.stringify({
+					type: "matchmaking",
+					action: "find_tournament"
+				}));
+			}
+			else
+			{
+				this.#message_queue.push({"type": 3});
+			}
+		}
+
+
+		sendAuth(player_id_str)
+		{
+			if (this.#socket.readyState === WebSocket.OPEN)
+			{
+				this.#socket.send(JSON.stringify({
+					type: "auth",
+					session_id: player_id_str,
+					player_id: player_id_str,
+					notif_id: player_id_str
+				}));
+			}
+			else
+			{
+				this.#message_queue.push({"type": 1, "id": player_id_str});
+			}
+		}
+
+		sendAuthGame(player_id_str)
+		{
+			if (this.#socket.readyState === WebSocket.OPEN)
+			{
+				this.#socket.send(JSON.stringify({
+					action: "auth",
+					session_id: player_id_str,
+					player_id: player_id_str,
+					notif_id: player_id_str
+				}));
+			}
+			else
+			{
+				this.#message_queue.push({"type": 2, "id": player_id_str});
+			}
+		}
+	};
+	let player_a_mm = new mmPlayer("wss://localhost:8443/ws/room/", true);
+	let player_b_mm = new mmPlayer("wss://localhost:8443/ws/room/", true);
+	let player_c_mm = new mmPlayer("wss://localhost:8443/ws/room/", true);
+
+	player_a_mm.sendAuth("950917176255461194");
+	player_b_mm.sendAuth("157517176258245349");
+	player_c_mm.sendAuth("747917192355703039");
+
+	
+	let player_a_ng = new mmPlayer("wss://localhost:8443/ws/game/", true);
+	let player_b_ng = new mmPlayer("wss://localhost:8443/ws/game/", true);
+	let player_c_ng = new mmPlayer("wss://localhost:8443/ws/game/", true);
+
+	player_a_ng.sendAuthGame("950917176255461194");
+	player_b_ng.sendAuthGame("157517176258245349");
+	player_c_ng.sendAuthGame("747917192355703039");
+
+	function joinTour()
+	{
+		player_a_mm.findTour();
+		player_b_mm.findTour();
+		player_c_mm.findTour();
+	}
+	joinTour();
+    </script>
+
+
+</body>
+</html>

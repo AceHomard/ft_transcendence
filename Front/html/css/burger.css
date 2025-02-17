@@ -1,0 +1,82 @@
+.burger-menu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 120; /* Assurez-vous que le burger menu est au-dessus des autres éléments */
+    position: absolute; /* Position absolue pour le placer en haut à droite */
+    top: 20px; /* Ajustez selon vos besoins */
+    right: 20px; /* Ajustez selon vos besoins */
+}
+
+.burger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--button-text-color);
+    transition: all 0.3s ease;
+}
+
+.nav-buttons {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-button {
+    background-color: transparent;
+    color: var(--button-text-color);
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-buttons {
+        display: none;
+        flex-direction: column;
+        position: absolute; /* Position absolue pour qu'ils apparaissent sous le burger menu */
+        top: 60px; /* Ajustez selon vos besoins, doit être en-dessous du burger menu */
+        right: 20px; /* Alignez avec le burger menu */
+        background-color: var(--nav-bg-color); /* Ajoutez un fond pour le menu déroulant */
+        padding: 10px; /* Ajoutez un peu de padding */
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); /* Ajoutez une ombre */
+        border-radius: 8px; /* Ajoutez des bords arrondis */
+    }
+
+    .nav-buttons li {
+        margin: 10px 0;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+
+    .burger-menu.open + .nav-buttons {
+        display: flex;
+    }
+	.dropbtn{
+		display: none;
+	}
+    .burger-menu.open span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .burger-menu.open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger-menu.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+	.dropdown-content{
+		right: 80px;
+	}
+	.options-container{
+		margin-top: 0px;
+		right: 80px;
+	}
+}

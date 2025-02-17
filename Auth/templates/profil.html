@@ -1,0 +1,36 @@
+<div class="login-box-main">
+	<h2>Profil de {{ user.identifiant }}</h2>
+	<img src="/media/{{ user.profile_picture }}" class="pp" />
+	
+	<form method="post" id="profilForm" action="/auth/profil/" enctype="multipart/form-data">
+		<div class="login-box-input" id="username_box">
+			<label for="username" class="form-label" id="username_title">Username</label>
+			<input type="text" class="form-control login-input" id="username" name="username" autocomplete="off"
+				required>
+		</div>
+		<div class="login-box-input" id="email_box">
+			<label for="email" class="form-label" id="email_title">Email address</label>
+			<input type="email" class="form-control login-input" id="email" name="email" autocomplete="off" required>
+		</div>
+		<div class="login-box-input" id="password_box">
+			<label for="password" class="form-label" id="password_title">Password</label>
+			<input type="password" class="form-control login-input" id="password" name="password" autocomplete="off"
+				required>
+		</div>
+		<div class="login-box-input">
+			<label for="two_factor_enabled" id="2fainput">Enable 2FA</label>
+			<input type="checkbox" id="two_factor_enabled" name="two_factor_enabled" class="custom-checkbox" {% if qr_code %}checked{% endif %}>
+		</div>
+		<div class="login-box-input">
+            <label for="profile_picture" class="custom-file-upload" id="uploadpp">
+                Upload a new profile picture
+            </label>
+            <input type="file" id="profile_picture" name="profile_picture">
+        </div>
+
+		<button type="submit" class="login-submit-btn" id="validate">Submit</button>
+	</form>
+	{% if qr_code %}
+		<img src="{{ qr_code }}" alt="QR Code" width="200" height="200">
+	{% endif %}
+</div>

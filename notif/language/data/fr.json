@@ -1,0 +1,29 @@
+{
+  "notif.error.title": "ERREUR",
+  "notif.info.title": "INFO",
+
+  "notif.error.already_in_game": "Vous êtes déjà en partie",
+  "notif.error.already_waiting_room": "Vous êtes déjà en recherche d'une partie",
+  "notif.error.unknown_in_room": "Impossible de trouver la partie",
+  "notif.error.already_in_room": "Vous êtes déjà dans une room",
+  "notif.error.game_full": "La partie est déjà pleine",
+
+  "notif.error.already_waiting_tournament": "Vous êtes déjà en recherche d'un tournoi",
+  "notif.error.unknown_in_tournament": "Impossible de trouver le tournoi",
+  "notif.error.already_in_tournament": "Vous êtes déjà dans le tournoi",
+  "notif.error.tournament_full": "Le tournoi est déjà plein",
+
+  "notif.error.incorrect_login": "Nom d'utilisateur ou mot de passe invalide",
+  "notif.error.register_id_already_used": "Identifiant déjà utilisé",
+  "notif.error.register_user_already_used": "Nom d'utilisateur déjà utilisé",
+  "notif.error.password_mismatch": "Les mots de passe ne correspondent pas",
+
+  "notif.error.invalid_auth": "Identifiant invalide, veuillez vous reconnecter",
+
+  "notif.info.social_add_friend": "Vous avez ajoutez un nouvel ami",
+  "notif.info.social_remove_friend": "Vous avez supprimé un ami",
+
+  "notif.error.otp": "Code OTP invalide",
+  "notif.error.form": "Informations non mise a jour",
+  "notif.info.form": "Informations mise a jour"
+}

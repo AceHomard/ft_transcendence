@@ -1,0 +1,42 @@
+matchmaking-1       | 2024-06-24 18:46:03,807 ERROR    Exception inside application: Group name must be a valid unicode string containing only ASCII alphanumerics, hyphens, or periods.
+matchmaking-1       | Traceback (most recent call last):
+matchmaking-1       |   File "/usr/local/lib/python3.10/site-packages/channels/routing.py", line 71, in __call__
+matchmaking-1       |     return await application(scope, receive, send)
+matchmaking-1       |   File "/usr/local/lib/python3.10/site-packages/channels/sessions.py", line 47, in __call__
+matchmaking-1       |     return await self.inner(dict(scope, cookies=cookies), receive, send)
+matchmaking-1       |   File "/usr/local/lib/python3.10/site-packages/channels/sessions.py", line 263, in __call__
+matchmaking-1       |     return await self.inner(wrapper.scope, receive, wrapper.send)
+matchmaking-1       |   File "/usr/local/lib/python3.10/site-packages/channels/auth.py", line 185, in __call__
+matchmaking-1       |     return await super().__call__(scope, receive, send)
+matchmaking-1       |   File "/usr/local/lib/python3.10/site-packages/channels/middleware.py", line 26, in __call__
+matchmaking-1       |     return await self.inner(scope, receive, send)
+matchmaking-1       |   File "/usr/local/lib/python3.10/site-packages/channels/routing.py", line 150, in __call__
+matchmaking-1       |     return await application(
+nginx-1             | 2024/06/24 18:46:03 [error] 32#32: *25 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 172.18.0.1, server: localhost, request: "GET /ws/room/ HTTP/1.1", upstream: "http://172.18.0.5:8065/ws/room/", host: "localhost:8443"
+matchmaking-1       |   File "/usr/local/lib/python3.10/site-packages/channels/consumer.py", line 94, in app
+nginx-1             | 172.18.0.1 - - [24/Jun/2024:18:46:03 +0000] "GET /ws/room/ HTTP/1.1" 101 113 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" "-"
+matchmaking-1       |     return await consumer(scope, receive, send)
+matchmaking-1       |   File "/usr/local/lib/python3.10/site-packages/channels/consumer.py", line 58, in __call__
+matchmaking-1       |     await await_many_dispatch(
+matchmaking-1       |   File "/usr/local/lib/python3.10/site-packages/channels/utils.py", line 51, in await_many_dispatch
+matchmaking-1       |     await dispatch(result)
+matchmaking-1       |   File "/usr/local/lib/python3.10/site-packages/channels/consumer.py", line 73, in dispatch
+matchmaking-1       |     await handler(message)
+matchmaking-1       |   File "/usr/local/lib/python3.10/site-packages/channels/generic/websocket.py", line 194, in websocket_receive
+matchmaking-1       |     await self.receive(text_data=message["text"])
+matchmaking-1       |   File "/app/./room/RoomConsumer.py", line 38, in receive
+matchmaking-1       |     await self.clientAuth(data["session_id"], data["player_id"], data["notif_id"])
+matchmaking-1       |   File "/app/./room/RoomConsumer.py", line 69, in clientAuth
+matchmaking-1       |     await self.client.updateChannel(self)
+matchmaking-1       |   File "/app/./room/RoomClient.py", line 142, in updateChannel
+matchmaking-1       |     await self.actualState(obj)
+matchmaking-1       |   File "/app/./room/RoomClient.py", line 153, in actualState
+matchmaking-1       |     await RoomRequest.joinStatusTour(obj, True, tournament_manager.getTournamentById(channel).getPlayerNb())
+matchmaking-1       |   File "/app/./room/RoomRequest.py", line 96, in joinStatusTour
+matchmaking-1       |     await channel_layer.group_send(
+matchmaking-1       |   File "/usr/local/lib/python3.10/site-packages/channels/layers.py", line 343, in group_send
+matchmaking-1       |     assert self.valid_group_name(group), "Invalid group name"
+matchmaking-1       |   File "/usr/local/lib/python3.10/site-packages/channels/layers.py", line 165, in valid_group_name
+matchmaking-1       |     raise TypeError(
+matchmaking-1       | TypeError: Group name must be a valid unicode string containing only ASCII alphanumerics, hyphens, or periods.
+matchmaking-1       | 172.18.0.10:41322 - - [24/Jun/2024:18:46:03] "WSDISCONNECT /ws/room/" - -

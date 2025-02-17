@@ -1,0 +1,29 @@
+<div class="play-page-main-box">
+    <canvas class="play-page-canvas" id="play_page_canvas"></canvas>
+    <div class="play-page-buttons-box unselectable play-page-btns"id="play_page_buttons">
+        <div class="play-page-btn-box">
+            <buttongame onclick="joinMatch()" class="play-page-btn" id="play_page_join_match_button">Join Match</buttongame>
+            <buttongame onclick="joinTour()" class="play-page-btn" id="play_page_join_tour_button">Join Tournament</buttongame>
+        </div>
+        <div class="play-page-btn-box">
+            <buttongame onclick="botted()" class="play-page-btn" id="play_page_bot_match_button">Bot Match</buttongame>
+            <buttongame onclick="localgame()" class="play-page-btn" id="play_page_local_match_button">Local Match</buttongame>
+        </div>
+    </div>
+    <div class="play-page-queue-box unselectable" id="play_page_queue" style="display: none">
+        <div class="play-page-queue-searching" id="play_page_queue_buttons">
+            <span class="play-page-queue-title" id="play_page_queue_title_match" style="display: none;">None</span>
+			<span class="play-page-queue-title" id="play_page_queue_title_tournament" style="display: none;">None</span>
+            <div class="loader"></div>
+        </div>
+        <div id="players_nb_waiting" class="play-player-nb-box">
+        </div>
+
+        <div class="play-page-btn-box">
+            <span class="play-page-queue-waiting" id="waiting">Waiting:</span>
+            <span class="play-page-queue-waiting-value" id="play_page_queue_waiting">00:00</span>
+        </div>
+
+        <buttongame onclick="cancelMM()" style="margin-top:10px" id="matchcancel">Cancel</buttongame>
+    </div>
+</div>
