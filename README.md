@@ -46,11 +46,11 @@ Nous avons travaillé ensemble pour concevoir et développer `ft_transcendence` 
    git clone https://github.com/votre-repo/ft_transcendence.git
    cd ft_transcendence
    ```
-2️⃣ Lancez l'application avec Docker 🐳 :
+2️⃣ **Lancez l'application avec Docker** 🐳 :
    ```sh
    make
    ```
-3️⃣ Accédez à l'application via Google Chrome 🌍
+3️⃣ **Accédez à l'application via Google Chrome** 🌍
    ```sh
    https://localhost:8443/
    ```
